@@ -1,0 +1,26 @@
+/**
+ * SVG Menu Icon styles
+ *
+ * @package ID_Basica_Addons
+ */
+
+/* SVG icon container styles */
+.menu-item-svg {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* SVG element styles */
+.menu-item-svg svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* Admin menu editor styling */
+.field-svg-icon textarea {
+    height: 80px;
+    font-family: monospace;
+}

@@ -23,7 +23,7 @@ composer.lock
 
 # Ignore Git files
 .git/
-.github/
+#.github/
 
 # Ignore other sensitive files
 .env
