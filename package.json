@@ -1,7 +1,7 @@
 {
 	"name": "idbasica-addons",
 	"version": "0.1.0",
-	"main": "Gruntfile.js",
+	"main": "gruntfile.js",
 	"author": "YOUR NAME HERE",
 	"scripts": {
 		"start": "grunt default",
@@ -24,6 +24,6 @@
 		"webpack-cli": "^6.0.1"
 	},
 	"dependencies": {
-		"signature_pad": "^5.0.9"
+		"signature_pad": "^5.0.10"
 	}
 }

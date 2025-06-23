@@ -9,7 +9,7 @@ module.exports = function( grunt ) {
 
 		addtextdomain: {
 			options: {
-				textdomain: 'idbasica-addons',
+				textdomain: 'id-basica-addons',
 			},
 			update_all_domains: {
 				options: {
@@ -32,8 +32,8 @@ module.exports = function( grunt ) {
 				options: {
 					domainPath: '/languages',
 					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*' ],
-					mainFile: 'idbasica-addons.php',
-					potFilename: 'idbasica-addons.pot',
+					mainFile: 'id-basica-addons.php',
+					potFilename: 'id-basica-addons.pot',
 					potHeaders: {
 						poedit: true,
 						'x-poedit-keywordslist': true
@@ -43,11 +43,23 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
+
+		// Add PHP linting task
+		phpcs: {
+			application: {
+				src: [ '*.php', '**/*.php', '!node_modules/**/*', '!vendor/**/*' ]
+			},
+			options: {
+				bin: 'vendor/bin/phpcs',
+				standard: 'PSR12'
+			}
+		},
+
 	} );
 
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
-	grunt.registerTask( 'default', [ 'i18n','readme' ] );
+	grunt.registerTask( 'default', [ 'i18n', 'readme', 'phpcs' ] );
 	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
 

@@ -1,9 +1,36 @@
+# Ignore system files
 .DS_Store
-phpcs.xml
-phpunit.xml
 Thumbs.db
-wp-cli.local.yml
+
+# Ignore IDE and editor files
+*.code-workspace
+.idea/
+.vscode/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore composer and npm files
 node_modules/
-*.sql
-*.tar.gz
-*.zip
+vendor/
+package-lock.json
+composer.lock
+
+# Ignore OS generated files
+*.swp
+*.swo
+
+# Ignore Git files
+.git/
+.github/
+
+# Ignore other sensitive files
+.env
+.env.*
+!.env.example
+
+# Compiled files
+*.map
+*.css.map
+*.js.map
