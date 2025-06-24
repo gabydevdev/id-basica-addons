@@ -1,11 +1,7 @@
-.m-signature-pad {
-	
-}
-
-.m-signature-pad--body {
-	
-}
-
 .m-signature-pad--body canvas {
-	
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  background-color: #fff;
 }
+/*# sourceMappingURL=field.css.map */
