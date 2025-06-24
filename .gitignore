@@ -34,3 +34,5 @@ composer.lock
 *.map
 *.css.map
 *.js.map
+
+prepros.config
