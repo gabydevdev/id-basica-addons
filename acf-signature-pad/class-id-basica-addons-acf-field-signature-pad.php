@@ -47,16 +47,8 @@ class id_basica_addons_acf_field_signature_pad extends \acf_field {
 		$version = $this->env['version'];
 
 		wp_register_script(
-			'id-basica-addons-signature-pad-lib',
-			"{$url}../assets/js/signature-pad.min.js",
-			array(),
-			'4.1.5',
-			true
-		);
-
-		wp_register_script(
 			'id-basica-addons-signature-pad',
-			"{$url}../assets/js/field.js",
+			"{$url}../assets/js/acf-signature.js",
 			array( 'acf-input', 'id-basica-addons-signature-pad-lib' ),
 			$version,
 			true
@@ -64,7 +56,7 @@ class id_basica_addons_acf_field_signature_pad extends \acf_field {
 
 		wp_register_style(
 			'id-basica-addons-signature-pad',
-			"{$url}../assets/css/field.css",
+			"{$url}../assets/css/acf-signature.css",
 			array( 'acf-input' ),
 			$version
 		);
