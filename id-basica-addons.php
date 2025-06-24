@@ -28,7 +28,7 @@ require_once ID_BASICA_ADDONS_DIR . 'includes/activation.php';
 require_once ID_BASICA_ADDONS_DIR . 'includes/deactivation.php';
 
 // Include the custom field class
-// require_once ID_BASICA_ADDONS_DIR . 'includes/class-id-basica-addons-acf-field-signature-pad.php';
+include_once __DIR__ . '/acf-signature-pad/init.php';
 
 // Include SVG menu functionality
 require_once ID_BASICA_ADDONS_DIR . 'includes/svg-menu.php';
@@ -36,7 +36,7 @@ require_once ID_BASICA_ADDONS_DIR . 'includes/svg-menu-styles.php';
 
 // Initialize the core plugin class
 if ( class_exists( 'ID_Basica_Addons' ) ) {
-    new ID_Basica_Addons();
+	new ID_Basica_Addons();
 }
 
 // Register activation and deactivation hooks

@@ -1,0 +1,15 @@
+.acf-signature-wrapper {
+    margin-bottom: 10px;
+}
+
+.acf-signature-canvas {
+    border: 1px solid #ccc;
+    background: #fff;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.acf-signature-clear {
+    margin-top: 5px;
+}
