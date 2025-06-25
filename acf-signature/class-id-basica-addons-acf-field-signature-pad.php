@@ -1,6 +1,4 @@
 <?php
-if ( ! defined( 'ABSPATH' ) )
-	exit;
 
 class id_basica_addons_acf_field_signature_pad extends \acf_field {
 
@@ -8,20 +6,15 @@ class id_basica_addons_acf_field_signature_pad extends \acf_field {
 	private $env;
 
 	public function __construct() {
-		$this->name     = 'signature_pad';
-		$this->label    = __( 'Signature Pad', 'id-basica-addons' );
+		$this->name     = 'signature';
+		$this->label    = __( 'Signature', 'id-basica-addons' );
 		$this->category = 'content';
 		$this->defaults = array();
-		$this->l10n     = array(
-			'error' => __( 'Error! Please enter a higher value', 'id-basica-addons' ),
-		);
 
 		$this->env = array(
-			'url'     => ID_BASICA_ADDONS_URL . 'acf-signature-pad',
+			'url'     => ID_BASICA_ADDONS_URL . 'acf-signature',
 			'version' => '1.0.0',
 		);
-
-		$this->preview_image = $this->env['url'] . 'assets/images/field-preview-custom.png';
 
 		parent::__construct();
 	}
@@ -68,20 +61,20 @@ class id_basica_addons_acf_field_signature_pad extends \acf_field {
 
 		wp_register_script(
 			'id-basica-addons-signature-pad-lib',
-			"{$url}assets/js/signature_pad.js"
+			"{$url}js/signature_pad.js"
 		);
 		wp_enqueue_script( 'id-basica-addons-signature-pad-lib' );
 
 		wp_register_script(
 			'id-basica-addons-signature-pad',
-			"{$url}assets/js/field.js",
+			"{$url}js/field.js",
 			array( 'acf-input', 'id-basica-addons-signature-pad-lib' )
 		);
 		wp_enqueue_script( 'id-basica-addons-signature-pad' );
 
 		wp_register_style(
 			'id-basica-addons-signature-pad',
-			"{$url}assets/css/field.css"
+			"{$url}css/field.css"
 		);
 		wp_enqueue_style( 'id-basica-addons-signature-pad' );
 	}

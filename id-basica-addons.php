@@ -28,7 +28,7 @@ require_once ID_BASICA_ADDONS_DIR . 'includes/activation.php';
 require_once ID_BASICA_ADDONS_DIR . 'includes/deactivation.php';
 
 // Include the custom field class
-include_once __DIR__ . '/acf-signature-pad/init.php';
+include_once ID_BASICA_ADDONS_DIR . '/acf-signature/acf-signature.php';
 
 // Include SVG menu functionality
 require_once ID_BASICA_ADDONS_DIR . 'includes/svg-menu.php';
