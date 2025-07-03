@@ -2,14 +2,21 @@
 /**
  * Plugin Name:     ID Basica Addons
  * Plugin URI:      https://identidadbasica.com/
- * Description:     Custom ACF fields and configurations for ID Basica theme
+ * Description:     Custom ACF fields and configurations for ID Basica theme. Provides signature pad fields, SVG menu icons, and additional functionality for the dashboard system.
  * Author:          Gabriela C.
  * Author URI:      https://github.com/gabydevdev
  * Text Domain:     id-basica-addons
  * Domain Path:     /languages
  * Version:         0.1.0
+ * Requires at least: 5.0
+ * Tested up to:    6.4
+ * Requires PHP:    7.4
+ * Network:         false
+ * License:         GPL v2 or later
+ * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
  *
  * @package         ID_Basica_Addons
+ * @since           0.1.0
  */
 
 // Exit if accessed directly.

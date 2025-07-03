@@ -13,7 +13,8 @@
 			inputObj = wrapper.find('input'),
 			input = inputObj[0],
 			signaturePad,
-			visible = false;
+			visible = false,
+			isDisabled = wrapper.find('.m-signature-pad').data('disabled') === true;
 
 		// Adjust canvas coordinate space taking into account pixel ratio,
 		// to make it look crisp on mobile devices.
@@ -48,14 +49,22 @@
 					signaturePad.fromDataURL(data);
 				}
 
+				// Disable signature pad if field is disabled
+				if (isDisabled) {
+					signaturePad.off();
+					$(canvas).css('pointer-events', 'none');
+				}
+
 				$(clearButton).on('click', function (e) {
 					e.preventDefault();
-					signaturePad.clear();
-					$(input).val('');
+					if (!isDisabled) {
+						signaturePad.clear();
+						$(input).val('');
+					}
 				});
 
 				$(canvas).on('touchend mouseup mouseleave', function (event) {
-					if (signaturePad) {
+					if (signaturePad && !isDisabled) {
 						if (signaturePad.isEmpty()) {
 							$(input).val('');
 						} else {
@@ -66,6 +75,65 @@
 			}
 		}, 100);
 	}
+
+	// Helper functions for programmatic control
+	window.idBasicaSignature = {
+		disable: function(fieldElement) {
+			var wrapper = $(fieldElement);
+			var signaturePad = wrapper.find('.m-signature-pad');
+			var canvas = wrapper.find('canvas');
+			var clearButton = wrapper.find('[data-action=clear]');
+			
+			// Add disabled state
+			signaturePad.addClass('signature-disabled');
+			signaturePad.attr('data-disabled', 'true');
+			
+			// Disable interactions
+			canvas.css('pointer-events', 'none');
+			clearButton.css('pointer-events', 'none');
+			
+			// Add overlay if it doesn't exist
+			if (!signaturePad.find('.signature-disabled-overlay').length) {
+				signaturePad.append(
+					'<div class="signature-disabled-overlay">' +
+						'<span class="signature-disabled-text">Signature field is disabled</span>' +
+					'</div>'
+				);
+			}
+		},
+		
+		enable: function(fieldElement) {
+			var wrapper = $(fieldElement);
+			var signaturePad = wrapper.find('.m-signature-pad');
+			var canvas = wrapper.find('canvas');
+			var clearButton = wrapper.find('[data-action=clear]');
+			
+			// Remove disabled state
+			signaturePad.removeClass('signature-disabled');
+			signaturePad.removeAttr('data-disabled');
+			
+			// Enable interactions
+			canvas.css('pointer-events', 'auto');
+			clearButton.css('pointer-events', 'auto');
+			
+			// Remove overlay
+			signaturePad.find('.signature-disabled-overlay').remove();
+		},
+		
+		disableAll: function() {
+			var fields = acf.getFields({type: 'signature'});
+			fields.forEach(function(field) {
+				idBasicaSignature.disable(field.$el);
+			});
+		},
+		
+		enableAll: function() {
+			var fields = acf.getFields({type: 'signature'});
+			fields.forEach(function(field) {
+				idBasicaSignature.enable(field.$el);
+			});
+		}
+	};
 
 	if (typeof acf.addAction !== 'undefined') {
 		/**

@@ -160,7 +160,7 @@ class acf_field_signature extends acf_field {
 
         // Pad JS
 
-        wp_register_script('signaturepad', "{$dir}js/signature_pad.js");
+        wp_register_script('signaturepad', "{$dir}js/signature_pad.js", array( 'underscore' ));
 		wp_enqueue_script('signaturepad');
 
 		// register & include JS
